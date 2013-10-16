@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
     if redirect
       redirect_to movies_path({:sort=>@sort, :ratings=>@ratings})
     elsif
-      columns = {'title'=>'title', 'release_date'=>'release_date'}
+      columns = {'title'=>'title', 'release_date'=>'release_date'} # hash
       if columns.has_key?(@sort) # returns true if the given key is present in hsh
         query = Movie.order(columns[@sort])
       else
@@ -33,7 +33,7 @@ class MoviesController < ApplicationController
         query = Movie
       end
       
-      @movies = @ratings.nil? ? query.all : query.find_all_by_rating(@ratings.map { |r| r[0] })
+      @movies = @ratings.nil? ? query.all : query.find_all_by_rating(@ratings.map { |r| r[0] }) # if didn't select any rating then display all
       @all_ratings = Movie.ratings  
     end
   end
