@@ -6,7 +6,9 @@
   Include: 
   - @all_ratings.each do |rating|
     = rating
-    = check_box_tag "ratings[#{rating}]", 1, params[:ratings].nil? ? 1:!params[:ratings][rating].nil?, id: "ratings_#{rating}"
+    = check_box_tag "ratings[#{rating}]", 1, params[:ratings].nil? ? 1:!params[:ratings][rating].nil?, id: "ratings_#{rating}" 
+    -# ruby Ternary operator ? :
+    -# If Condition is true ? Then value X : Otherwise value Y
   = submit_tag 'Refresh', {:id=>'ratings_submit'}
 
 %table#movies
